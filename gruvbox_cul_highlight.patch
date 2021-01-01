@@ -1,0 +1,13 @@
+diff --git a/colors/gruvbox.vim b/colors/gruvbox.vim
+index 66246fb..969264f 100644
+--- a/colors/gruvbox.vim
++++ b/colors/gruvbox.vim
+@@ -476,6 +476,9 @@ endif
+ if version >= 700
+   " Screen line that the cursor is
+   call s:HL('CursorLine',   s:none, s:bg1)
++  " Change highlight color in INSERT mode
++  autocmd InsertLeave * call s:HL('CursorLine', s:none, s:bg1)
++  autocmd InsertEnter * call s:HL('CursorLine', s:none, s:bg2)
+   " Screen column that the cursor is
+   hi! link CursorColumn CursorLine
