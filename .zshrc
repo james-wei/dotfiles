@@ -68,4 +68,5 @@ alias startmux='tmux new -s main'
 # Functions
 function f() { rg -i -p "$1" | less -R -S }
 function fixtrailingspaces() { sed -i 's/[[:space:]]*$//' "$1" }
+function vigsh() { vim -p $(git show --name-only --format='' | grep '\S') }
 function vimod() { vim -p $(git status --porcelain | awk '{print $2}') }
