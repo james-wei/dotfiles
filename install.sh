@@ -30,9 +30,9 @@ curl -fLso ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.
 
 # Patch gruvbox Vim colorscheme
 if [ -s "${HOME}/.vim/plugged/gruvbox/colors/gruvbox.vim" ]; then
-  patch "${HOME}/.vim/plugged/gruvbox/colors/gruvbox.vim" -i gruvbox_cul_highlight.patch --dry-run &> /dev/null
+  patch "${HOME}/.vim/plugged/gruvbox/colors/gruvbox.vim" -s -i gruvbox_cul_highlight.patch --dry-run
   if [ $? -eq 0 ]; then
-    patch "${HOME}/.vim/plugged/gruvbox/colors/gruvbox.vim" -i gruvbox_cul_highlight.patch &> /dev/null
+    patch "${HOME}/.vim/plugged/gruvbox/colors/gruvbox.vim" -s -i gruvbox_cul_highlight.patch
   else
     echo 'Could not patch gruvbox, skipping...'
   fi
