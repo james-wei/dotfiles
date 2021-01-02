@@ -58,10 +58,10 @@ if [ -s ${CHECKOUTS}/scm-breeze/scm_breeze.sh ]; then
 fi
 
 # OS-specific configuration
-if [[ "${OSTYPE}" = 'linux-gnu'* ]]; then # Linux
+if [[ $(uname -s) = 'Linux' ]]; then # Linux
   # Locally compiled binaries
   [ -d "${HOME}/.local/bin" ] && export PATH="${HOME}/.local/bin:$PATH"
-elif [[ "${OSTYPE}" = 'darwin'* ]]; then # macOS
+elif [[ $(uname -s) = 'Darwin' ]]; then # macOS
   # Homebrew binaries
   export PATH="/usr/local/bin:$PATH"
   export PATH="/usr/local/sbin:$PATH"
