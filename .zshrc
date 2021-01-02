@@ -44,8 +44,8 @@ FZF_DEFAULT_COMMAND='rg --files'
 FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 
 # SCM Breeze: https://github.com/scmbreeze/scm_breeze
-if [ -s ${HOME}/.scm_breeze/scm_breeze.sh ]; then
-  source ${HOME}/.scm_breeze/scm_breeze.sh
+if [ -s ${HOME}/co/scm-breeze/scm_breeze.sh ]; then
+  source ${HOME}/co/scm-breeze/scm_breeze.sh
 fi
 
 # OS-specific configuration
