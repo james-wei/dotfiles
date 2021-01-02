@@ -22,11 +22,9 @@ fi
 [ -s ".vimrc" ] && cp -a ".vimrc" "${HOME}/.vimrc"
 
 # Configure vim-plug + install plugins
-curl -fLso ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-/bin/zsh -c "vim +PlugUpgrade +qall &> /dev/null"
-/bin/zsh -c "vim +PlugInstall +qall &> /dev/null"
-/bin/zsh -c "vim +PlugUpdate +qall &> /dev/null"
-/bin/zsh -c "vim +PlugClean! +qall &> /dev/null"
+curl -fLso ~/.vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+/bin/sh -c "vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean! +qall &> /dev/null"
 
 # Patch gruvbox Vim colorscheme
 if [ -s "${HOME}/.vim/plugged/gruvbox/colors/gruvbox.vim" ]; then
