@@ -21,6 +21,10 @@ antigen bundle sindresorhus/pure
 
 antigen apply
 
+# Set Git checkouts directory
+CHECKOUTS="${HOME}/co"
+mkdir -p "${CHECKOUTS}"
+
 # Set colors
 if [ -s ${HOME}/.vim/plugged/gruvbox/gruvbox_256palette.sh ]; then
   source ${HOME}/.vim/plugged/gruvbox/gruvbox_256palette.sh
@@ -40,17 +44,17 @@ zstyle :prompt:pure:path color 39
 zstyle :prompt:pure:prompt:success color 198
 
 # FZF: https://github.com/junegunn/fzf
-if [ -d ${HOME}/co/fzf ]; then
+if [ -d ${CHECKOUTS}/fzf ]; then
   FZF_DEFAULT_COMMAND='rg --files'
   FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
-  export PATH="${PATH:+${PATH}:}${HOME}/co/fzf/bin"
-  [[ $- == *i* ]] && source "${HOME}/co/fzf/shell/completion.zsh" 2> /dev/null
-  source "${HOME}/co/fzf/shell/key-bindings.zsh"
+  export PATH="${PATH:+${PATH}:}${CHECKOUTS}/fzf/bin"
+  [[ $- == *i* ]] && source "${CHECKOUTS}/fzf/shell/completion.zsh" 2> /dev/null
+  source "${CHECKOUTS}/fzf/shell/key-bindings.zsh"
 fi
 
 # SCM Breeze: https://github.com/scmbreeze/scm_breeze
-if [ -s ${HOME}/co/scm-breeze/scm_breeze.sh ]; then
-  source ${HOME}/co/scm-breeze/scm_breeze.sh
+if [ -s ${CHECKOUTS}/scm-breeze/scm_breeze.sh ]; then
+  source ${CHECKOUTS}/scm-breeze/scm_breeze.sh
 fi
 
 # OS-specific configuration
