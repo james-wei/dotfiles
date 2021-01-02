@@ -32,6 +32,12 @@ PURE_CMD_MAX_EXEC_TIME=1048576
 # Single-line prompt: github.com/sindresorhus/pure/issues/228
 prompt_newline='%666v'
 PROMPT=" $PROMPT"
+# Higher contrast colors
+zstyle :prompt:pure:git:branch color 208
+zstyle :prompt:pure:git:action color 136
+zstyle :prompt:pure:git:dirty color 170
+zstyle :prompt:pure:path color 39
+zstyle :prompt:pure:prompt:success color 198
 
 # SCM Breeze: https://github.com/scmbreeze/scm_breeze
 if [ -s ${HOME}/.scm_breeze/scm_breeze.sh ]; then
