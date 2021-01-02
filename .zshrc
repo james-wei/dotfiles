@@ -40,8 +40,13 @@ zstyle :prompt:pure:path color 39
 zstyle :prompt:pure:prompt:success color 198
 
 # FZF: https://github.com/junegunn/fzf
-FZF_DEFAULT_COMMAND='rg --files'
-FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+if [ -d ${HOME}/co/fzf ]; then
+  FZF_DEFAULT_COMMAND='rg --files'
+  FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+  export PATH="${PATH:+${PATH}:}${HOME}/co/fzf/bin"
+  [[ $- == *i* ]] && source "${HOME}/co/fzf/shell/completion.zsh" 2> /dev/null
+  source "${HOME}/co/fzf/shell/key-bindings.zsh"
+fi
 
 # SCM Breeze: https://github.com/scmbreeze/scm_breeze
 if [ -s ${HOME}/co/scm-breeze/scm_breeze.sh ]; then
@@ -52,23 +57,10 @@ fi
 if [[ "${OSTYPE}" = 'linux-gnu'* ]]; then # Linux
   # Locally compiled binaries
   [ -d "${HOME}/.local/bin" ] && export PATH="${HOME}/.local/bin:$PATH"
-
-  # FZF
-  if [ -d "${HOME}/.fzf" ]; then
-    export PATH="${PATH:+${PATH}:}${HOME}/.fzf/bin"
-    [[ $- == *i* ]] && source "${HOME}/.fzf/shell/completion.zsh" 2> /dev/null
-    source "${HOME}/.fzf/shell/key-bindings.zsh"
-  fi
 elif [[ "${OSTYPE}" = 'darwin'* ]]; then # macOS
   # Homebrew binaries
   export PATH="/usr/local/bin:$PATH"
   export PATH="/usr/local/sbin:$PATH"
-
-  # FZF via Homebrew
-  if [ -d "/usr/local/opt/fzf" ]; then
-    [[ $- == *i* ]] && source '/usr/local/opt/fzf/shell/completion.zsh' 2> /dev/null
-    source '/usr/local/opt/fzf/shell/key-bindings.zsh' 2> /dev/null
-  fi
 else
   echo 'Warning: unrecognized operating system'
 fi
