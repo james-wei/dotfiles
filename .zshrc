@@ -8,7 +8,6 @@ antigen use oh-my-zsh
 
 # Bundles: base
 antigen bundle colored-man-pages
-antigen bundle vi-mode
 antigen bundle tmux
 
 # Bundles: external
@@ -56,6 +55,11 @@ fi
 if [ -s ${CHECKOUTS}/scm-breeze/scm_breeze.sh ]; then
   source ${CHECKOUTS}/scm-breeze/scm_breeze.sh
 fi
+
+# Vi mode
+bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'JK' vi-cmd-mode
 
 # OS-specific configuration
 if [[ $(uname -s) = 'Linux' ]]; then # Linux
