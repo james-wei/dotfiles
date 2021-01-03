@@ -48,6 +48,9 @@ set ttymouse=xterm2
 set mouse=a
 set mousehide
 
+" Copy/paste
+set pastetoggle=<Leader>p
+
 " Searching
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
