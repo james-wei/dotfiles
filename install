@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 repo_root="$(dirname $0)"
 cd "${repo_root}"
@@ -24,7 +24,8 @@ fi
 # Configure vim-plug + install plugins
 curl -fLso ~/.vim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-/bin/sh -c "vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean! +qall &> /dev/null"
+vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean! +qall &> /dev/null &
+wait
 
 # Patch gruvbox Vim colorscheme
 if [ -s "${HOME}/.vim/plugged/gruvbox/colors/gruvbox.vim" ]; then
