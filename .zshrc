@@ -75,7 +75,6 @@ fi
 
 # Aliases
 alias editshconfig='vim ~/.zshrc'
-alias gplr='git pull --rebase origin main'
 alias j='cd ${HOME} && clear'
 alias reattach='tmux attach -t main'
 alias reloadshconfig='source ~/.zshrc'
@@ -84,5 +83,12 @@ alias startmux='tmux new -s main'
 # Functions
 function f() { rg -i -p "$1" | less -R -S }
 function fixtrailingspaces() { sed -i 's/[[:space:]]*$//' "$1" }
+function gplr() {
+  if git branch --list | grep "main$" &> /dev/null; then
+    git pull --rebase origin main
+  else
+    git pull --rebase origin master
+  fi
+}
 function vigsh() { vim -p $(git show --name-only --format='' | grep '\S') }
 function vimod() { vim -p $(git status --porcelain | awk '{print $2}') }
