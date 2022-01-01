@@ -16,7 +16,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 # Theme: Pure (https://github.com/sindresorhus/pure)
 antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
+antigen bundle sindresorhus/pure --branch=main
 
 antigen apply
 
